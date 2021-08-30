@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
+
 
 export const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
 export const cohortName = '2105-SJS-RM-WEB-PT';
@@ -10,25 +12,36 @@ function RegisterForm({Register, error}) {
     const submitHandler = e => {
         e.preventDefault();
 
-        //call Login function through props
+        //call Register function through props
         // Register(details);
  
         console.log('i am submitting')
 
-        // const registerUserInfo = fetch(BASE_URL + cohortName + '/users/register', {
-        // method: "POST",
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        // body: JSON.stringify({
-        //     user: {
-        //     username: 'superman27',
-        //     password: 'krypt0n0rbust'
-        //     }
-        // })
-        // })
+        
+
+        const fetchToken= async () => {
+            const registerUserInfo = await fetch(BASE_URL + cohortName + '/users/register', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: {
+                username: 'admin',
+                password: 'password123'
+                }
+            })
+            })
+
+            console.log("registerUserInfo", registerUserInfo)
+        }
+
+        fetchToken()
+
+        
     }
 
+    
     return (
         <form onSubmit={submitHandler}>
 
@@ -54,6 +67,7 @@ function RegisterForm({Register, error}) {
                     <input type="password" name="verifyPassword" id="verifyPassword" onChange={e => setDetails({...details, verifyPassword: e.target.value})} value={details.verifyPassword}></input>
                 </div>
                 <input type="submit" value="REGISTER"></input>
+                <p className="form-group, member">Already a member? <Link to="/Login">Click here to Login</Link></p>
             </div>
 
         </form>

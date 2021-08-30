@@ -21,7 +21,14 @@ const Posts = () => {
         fetchPost()
     }, [])
 
-    
+    //function to delete posts
+    const handleDeletePost = (id) => {
+        const newPost = posts.filter(post => post._id !== id);
+        setPosts(newPost)
+
+    }
+
+
     return (
         <div className='all-posts-container'>
         {/* DISPLAY POSTS */}
@@ -35,6 +42,7 @@ const Posts = () => {
                     <p className="price"> Price: {post.price} </p>
                     <p className='seller' > Seller: {post.author.username} </p>
                     <p className='location'>  Location: {post.location} </p>
+                    {/* <button className='delete' onClick={() => handleDeletePost(post._id)} >Delete Post</button> */}
                 </div>
             </div>)}
         </div>

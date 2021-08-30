@@ -224,6 +224,10 @@ form .form-inner input[type='submit']:hover,
     background-position: 100% 0%;
 }
 
+.notMember, .member {
+  margin: 20px;
+}
+
 /* -------- Welcome page ---------- */
 .welcome {
   width: 100%;
