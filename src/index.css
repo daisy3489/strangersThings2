@@ -3,6 +3,7 @@
 /*===== VARIABLES CSS =====*/
 :root {
   /*colors*/
+  --detailPurple: #753369;
   --lightPurple: #f5ebf5;
   --mediumPurple: #685093;
   --darkPurple: #484665;
@@ -17,12 +18,12 @@ input, button {
   outline: none;
 }
 
+html {
+  background-color: var(--lightPurple);
+}
+
 .App {
   min-height: 100vh;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  background-color: var(--lightPurple);
 }
 
 /* base styles */
@@ -206,7 +207,7 @@ form .form-inner input[type='submit'], .welcome button {
 display: inline-block;
 padding: 10px 15px;
 border-radius: 8px;
-background-image: linear-gradient(to right, var(--lightPurple) 50%, var(--mediumPurple) 50%, var(--darkPurple));
+background-image: linear-gradient(to right, var(--detailPurple) 50%, var(--detailPurple) 50%, var(--darkPurple));
 background-size: 200%;
 background-position: 0%;
 transition: 0.4s;
@@ -231,7 +232,6 @@ form .form-inner input[type='submit']:hover,
 /* -------- Welcome page ---------- */
 .welcome {
   width: 100%;
-  /* max-width: 480px; */
   background-color: #fff;
   padding: 15px 30px;
 }

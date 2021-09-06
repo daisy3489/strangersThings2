@@ -5,9 +5,12 @@ import LoginForm from './Login';
 import WelcomePage from './Welcome';
 import RegisterForm from './Register';
 import CreatePost from './CreatePost';
+import MessageForm from './Messages';
+
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import { useState } from "react"
+
 
 function App() {
   const [user, setUser] = useState({username: '', password: ''});
@@ -71,6 +74,9 @@ function App() {
             <Route exact path="/CreatePost">
               <CreatePost />
             </Route>
+            <Route path="/Messages" >
+              <MessageForm />
+            </Route>
             <Route exact path="/Posts">
               <Posts  />
             </Route>
@@ -80,7 +86,7 @@ function App() {
             <Route exact path="/Profile">
               <WelcomePage Logout={Logout} user={user} />
             </Route>
-            <Route path="/Login" >
+            <Route path="/Account/Login" >
               <LoginForm Login={Login} error={error} />
             </Route>
 

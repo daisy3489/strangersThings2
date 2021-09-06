@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-
+import { useParams, useHistory } from 'react-router';
 
 export const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
 export const cohortName = '2105-SJS-RM-WEB-PT';
 
+
 function LoginForm({Login, error}) {
     const [details, setDetails] = useState({username: '', password: ''});
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const params = useParams();
+    const history = useHistory();
+
+    console.log("params: ", params)
 
     //handle submit
     const submitHandler = e => {
@@ -22,6 +29,7 @@ function LoginForm({Login, error}) {
 
             <div className="form-inner">
                 <h2>Login</h2>
+                <div>This is the {params.method} method</div>
                 {/* check for error */}
                 {(error !== '') ? ( <div className="error">{error}</div>) : ''}
                 <div className="form-group">

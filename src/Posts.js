@@ -42,7 +42,7 @@ const Posts = () => {
                     <p className="price"> Price: {post.price} </p>
                     <p className='seller' > Seller: {post.author.username} </p>
                     <p className='location'>  Location: {post.location} </p>
-                    {/* <button className='delete' onClick={() => handleDeletePost(post._id)} >Delete Post</button> */}
+                    <button className='delete' onClick={() => handleDeletePost(post._id)} >Delete Post</button>
                 </div>
             </div>)}
         </div>
