@@ -190,7 +190,7 @@ form .form-inner .form-group {
   color: var(--fuschia);
 }
 
-form .form-inner .form-group input {
+form .form-inner .form-group input, textarea {
   display: block;
   width: 100%;
   padding: 10px 15px;
@@ -199,7 +199,7 @@ form .form-inner .form-group input {
   transition: 0.4s;
 }
 
-form .form-inner .form-group input:focus {
+form .form-inner .form-group input:focus, textarea:focus {
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2)
 }
 
@@ -262,4 +262,19 @@ form .form-inner input[type='submit']:hover,
   font-size: 20px;
   color: var(--fuschia);
   margin-bottom: 8px;
+}
+
+.postButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.postButtons button {
+  min-width: 200px;
+  margin-top: 20px;
+}
+
+.postButtons a {
+  color: white;
+  text-decoration: none;
 }

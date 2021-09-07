@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom'
 
 export const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
 export const cohortName = '2105-SJS-RM-WEB-PT';
@@ -42,7 +43,11 @@ const Posts = () => {
                     <p className="price"> Price: {post.price} </p>
                     <p className='seller' > Seller: {post.author.username} </p>
                     <p className='location'>  Location: {post.location} </p>
-                    <button className='delete' onClick={() => handleDeletePost(post._id)} >Delete Post</button>
+                    <div className='postButtons'>
+                        <button className='delete' onClick={() => handleDeletePost(post._id)} >Delete Post</button>
+                        <button className='message'><Link to="/sentMessages" >Leave a Message</Link></button>
+                    </div>
+
                 </div>
             </div>)}
         </div>

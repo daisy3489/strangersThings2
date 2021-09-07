@@ -6,6 +6,7 @@ import WelcomePage from './Welcome';
 import RegisterForm from './Register';
 import CreatePost from './CreatePost';
 import MessageForm from './Messages';
+import SentMessages from './CreateMessage'
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -88,6 +89,9 @@ function App() {
             </Route>
             <Route path="/Account/Login" >
               <LoginForm Login={Login} error={error} />
+            </Route>
+            <Route path="/sentMessages" >
+              <SentMessages />
             </Route>
 
 
