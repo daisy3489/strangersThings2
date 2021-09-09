@@ -13,7 +13,7 @@ function LoginForm({Login, error}) {
     const params = useParams();
     const history = useHistory();
 
-    console.log("params: ", params)
+    // console.log("params: ", params)
 
     //handle submit
     const submitHandler = e => {
@@ -50,7 +50,7 @@ function LoginForm({Login, error}) {
                     <input type="password" name="verifyPassword" id="verifyPassword" onChange={e => setDetails({...details, verifyPassword: e.target.value})} value={details.verifyPassword}></input>
                 </div> */}
                 <input type="submit" value="LOGIN"></input>
-                <p className="form-group, notMember">Not a member? <Link to="/Register">Click here to register</Link></p>
+                <p className="form-group, notMember">Not a member? <Link to="/users/register">Click here to register</Link></p>
             </div>
 
         </form>

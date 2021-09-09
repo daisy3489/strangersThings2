@@ -45,7 +45,7 @@ const Posts = () => {
                     <p className='location'>  Location: {post.location} </p>
                     <div className='postButtons'>
                         <button className='delete' onClick={() => handleDeletePost(post._id)} >Delete Post</button>
-                        <button className='message'><Link to="/sentMessages" >Leave a Message</Link></button>
+                        <button className='message'><Link to="/sentMessages">Leave a Message</Link></button>
                     </div>
 
                 </div>

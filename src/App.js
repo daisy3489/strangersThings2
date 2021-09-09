@@ -69,25 +69,25 @@ function App() {
         <div className="content">
 
           <Switch>
-            <Route exact path="/Home">
+            <Route exact path="/home">
               <Home />
             </Route>
-            <Route exact path="/CreatePost">
+            <Route exact path="/createPost">
               <CreatePost />
             </Route>
-            <Route path="/Messages" >
+            <Route path="/messages" >
               <MessageForm />
             </Route>
-            <Route exact path="/Posts">
+            <Route exact path="/posts">
               <Posts  />
             </Route>
-            <Route exact path="/Register">
+            <Route exact path="/users/register">
               <RegisterForm Register={Register} />
             </Route>
-            <Route exact path="/Profile">
+            <Route exact path="/profile">
               <WelcomePage Logout={Logout} user={user} />
             </Route>
-            <Route path="/Account/Login" >
+            <Route path="/account/login" >
               <LoginForm Login={Login} error={error} />
             </Route>
             <Route path="/sentMessages" >
