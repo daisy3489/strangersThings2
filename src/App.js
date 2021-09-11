@@ -105,7 +105,7 @@ function App() {
               <Home />
             </Route>
             <Route exact path="/createPost">
-              <CreatePost />
+              <CreatePost token={token} />
             </Route>
             <Route path="/messages" >
               <MessageForm />
