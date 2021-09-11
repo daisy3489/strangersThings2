@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-const WelcomePage = ({Logout, user}) => {
+const WelcomePage = ({Logout}) => {
 
     return ( 
         <div className="welcome"> 
-          <h2>Welcome, <span>{user.username}</span>!</h2>
+          <h2>Welcome, <span>{}</span>!</h2>
           <button onClick={Logout}>Logout</button>
           
           <ul className="">

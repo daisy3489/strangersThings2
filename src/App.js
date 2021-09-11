@@ -10,13 +10,19 @@ import SentMessages from './CreateMessage'
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+
+export const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
+export const cohortName = '2105-SJS-RM-WEB-PT';
+
 
 
 function App() {
   const [user, setUser] = useState({username: '', password: ''});
   const [error, setError] = useState('');
-  const [token, setToken] = useState('')
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useState('');
  
   const adminUser = {
     username: 'bob',
@@ -38,9 +44,9 @@ function App() {
       console.log("Logged in successfully")
       //actually login  //change user details
       setUser({
-        username: details.username,
+        username: name,
         // email: details.email,
-        password: details.password
+        password: password
       });
     }
     else {
@@ -59,6 +65,31 @@ function App() {
     });
   }
 
+  //call login details
+  useEffect(() => {
+    (
+        async () => {
+            const response = await fetch(BASE_URL + cohortName +'/users/me', {
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer TOKEN_STRING_HERE'
+              }
+            });
+
+            const content = await response.json();
+
+            console.log("content:", content)
+
+            setName(content.name);
+
+            // console.log("name:", content.name)
+        }
+    )();
+});
+
+
+
+
 
   return (
     <Router>
@@ -69,6 +100,7 @@ function App() {
         <div className="content">
 
           <Switch>
+
             <Route exact path="/home">
               <Home />
             </Route>
@@ -85,63 +117,17 @@ function App() {
               <RegisterForm Register={Register} />
             </Route>
             <Route exact path="/profile">
-              <WelcomePage Logout={Logout} user={user} />
+              <WelcomePage Logout={Logout} setToken={setToken} />
             </Route>
-            <Route path="/account/login" >
+            <Route path="/users/login" >
               <LoginForm Login={Login} error={error} />
             </Route>
-            <Route path="/sentMessages" >
+            <Route path="/leaveMessages" >
               <SentMessages />
             </Route>
 
-
-            {/* LOGIN PAGE */}
-            
-              <div>
-                {/* if user name is not empty, render welcome screen, else if not logged in, display login form */}
-                {(user.username !== '') ? (
-                  
-                  
-                    <WelcomePage Logout={Logout} user={user} />
-                 
-                  
-                ): (
-                  
-                  
-                  //add a secondary / double / chain turniary to determine login or reguster form based on token
-                  
-                     <LoginForm Login={Login} error={error} />
-                  
-                
-                  
-                )}
-              </div>
-           
-            
-
-              
-
-
-
-
-
-
-
-
           </Switch>
 
-
-
-
-
-
-
-          
-          
-
-          
-
-          {/* */}
 
         </div>
       </div>

@@ -21,7 +21,7 @@ function RegisterForm({Register, error}) {
         //call Register function through props
         // Register(details);
 
-        console.log('register details: ', details);
+        // console.log('register details: ', details);
         console.log('PEN: ', password, email, name);
 
         //what we send to the server
@@ -51,14 +51,14 @@ function RegisterForm({Register, error}) {
 
         //call function
         fetchToken()
-
-        // setRedirect(true);
+        //set redirect to true
+        setRedirect(true);
 
         
     }
-    
+    //if true, redirect to login page
     if (redirect) {
-            return <Redirect to="/account/login" />;
+            return <Redirect to="/users/login" />;
         }
 
     
@@ -71,7 +71,6 @@ function RegisterForm({Register, error}) {
                 {(error !== '') ? ( <div className="error">{error}</div>) : ''}
                 <div className="form-group">
                     <label htmlFor="name">Username: </label>
-                                                                        {/* any time we change it, we're calling a function and we're passing through the event. The event holds the tartget value. we're updating the set details and we're passing through the new value for name. and that should now update name  */}
                     <input type="text" name="name" placeholder='john123' id="name"onChange={e => setName(e.target.value)}></input>
                 </div>
                 <div className="form-group">
@@ -84,10 +83,11 @@ function RegisterForm({Register, error}) {
                 </div>
                 <div className="form-group">
                     <label htmlFor="verifyPassword">Re-enter password: </label>
+                                                                                       {/* any time we change it, we're calling a function and we're passing through the event. The event holds the tartget value. we're updating the set details and we're passing through the new value for name. and that should now update name  */}
                     <input type="password" name="verifyPassword" id="verifyPassword" onChange={e => setDetails({...details, verifyPassword: e.target.value})} value={details.verifyPassword}></input>
                 </div>
                 <input type="submit" value="REGISTER"></input>
-                <p className="form-group, member">Already a member? <Link to="/account/login">Click here to Login</Link></p>
+                <p className="form-group, member">Already a member? <Link to="/users/login">Click here to Login</Link></p>
             </div>
 
         </form>
