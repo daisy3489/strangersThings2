@@ -31,29 +31,29 @@ function App() {
   }
 
   //function to register
-  const Register = details => {
-    console.log('registerDetails', details)
-  }
+  // const Register = details => {
+  //   console.log('registerDetails', details)
+  // }
 
   //function to be called when attempting to login 
-  const Login = details => {
-    console.log('Login details:', details);
+  // const Login = details => {
+  //   console.log('Login details:', details);
 
-    //if what we typed matches our saved example, then we're logged in
-    if (details.username === adminUser.username && details.password === adminUser.password ) {
-      console.log("Logged in successfully")
-      //actually login  //change user details
-      setUser({
-        username: name,
-        // email: details.email,
-        password: password
-      });
-    }
-    else {
-      console.log('Details do not match!')
-      setError('Details do not match!')
-    }
-  }
+  //   //if what we typed matches our saved example, then we're logged in
+  //   if (details.username === adminUser.username && details.password === adminUser.password ) {
+  //     console.log("Logged in successfully")
+  //     //actually login  //change user details
+  //     setUser({
+  //       username: name,
+  //       // email: details.email,
+  //       password: password
+  //     });
+  //   }
+  //   else {
+  //     console.log('Details do not match!')
+  //     setError('Details do not match!')
+  //   }
+  // }
 
   //function to logout
   const Logout = () => {
@@ -66,26 +66,26 @@ function App() {
   }
 
   //call login details
-  useEffect(() => {
-    (
-        async () => {
-            const response = await fetch(BASE_URL + cohortName +'/users/me', {
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer TOKEN_STRING_HERE'
-              }
-            });
+//   useEffect(() => {
+//     (
+//         async () => {
+//             const response = await fetch(BASE_URL + cohortName +'/users/me', {
+//               headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': 'Bearer TOKEN_STRING_HERE'
+//               }
+//             });
 
-            const content = await response.json();
+//             const content = await response.json();
 
-            console.log("content:", content)
+//             console.log("content:", content)
 
-            setName(content.name);
+//             setName(content.name);
 
-            // console.log("name:", content.name)
-        }
-    )();
-});
+//             // console.log("name:", content.name)
+//         }
+//     )();
+// });
 
 
 
@@ -114,13 +114,13 @@ function App() {
               <Posts  />
             </Route>
             <Route exact path="/users/register">
-              <RegisterForm Register={Register} />
+              <RegisterForm setToken={setToken} />
             </Route>
             <Route exact path="/profile">
-              <WelcomePage Logout={Logout} setToken={setToken} />
+              <WelcomePage Logout={Logout} />
             </Route>
             <Route path="/users/login" >
-              <LoginForm Login={Login} error={error} />
+              <LoginForm setToken={setToken} />
             </Route>
             <Route path="/leaveMessages" >
               <SentMessages />

@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import { useParams, Redirect } from 'react-router';
+import {  Redirect } from 'react-router';
 
 export const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
 export const cohortName = '2105-SJS-RM-WEB-PT';
 
 
 
-function LoginForm({Login, error}) {
+function LoginForm( {setToken}) {
     // const [details, setDetails] = useState({username: '', password: ''});
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
-    const [token, setToken] = useState('')
     
     // console.log("params: ", params)
 
@@ -44,11 +43,13 @@ function LoginForm({Login, error}) {
            //what we get back from server
            const content = await loginUserInfo.json();
 
-           console.log("content: ", content)
+           console.log("Login content: ", content)
 
            const token = content.data.token
-
            console.log("token: ", token)
+           setToken(token);
+
+           
 
            if(content.success === false) {
             document.write(content.error.message)
@@ -73,8 +74,7 @@ function LoginForm({Login, error}) {
 
             <div className="form-inner">
                 <h2>Login</h2>
-                {/* check for error */}
-                {(error !== '') ? ( <div className="error">{error}</div>) : ''}
+                
                 <div className="form-group">
                     <label htmlFor="name">Username: </label>
                                                                         {/* any time we change it, we're calling a function and we're passing through the event. The event holds the tartget value. we're updating the set details and we're passing through the new value for name. and that should now update name  */}

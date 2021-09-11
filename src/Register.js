@@ -6,14 +6,13 @@ import {Redirect} from 'react-router-dom';
 export const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
 export const cohortName = '2105-SJS-RM-WEB-PT';
 
-function RegisterForm({Register, error}) {
+function RegisterForm({setToken}) {
     const [details, setDetails] = useState({name: '', email: '', password: ''});
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
-    const [token, setToken] = useState('')
-
+    
     //handle submit
     const submitHandler = e => {
         e.preventDefault();
@@ -42,11 +41,13 @@ function RegisterForm({Register, error}) {
            //what we get back from server
            const content = await registerUserInfo.json();
 
-           console.log("content", content)
+           console.log("Register content", content)
 
            const token = content.data.token
 
            console.log("token", token)
+
+           setToken(token);
         }
 
         //call function
@@ -67,8 +68,7 @@ function RegisterForm({Register, error}) {
 
             <div className="form-inner">
                 <h2>Register</h2>
-                {/* check for error */}
-                {(error !== '') ? ( <div className="error">{error}</div>) : ''}
+                
                 <div className="form-group">
                     <label htmlFor="name">Username: </label>
                     <input type="text" name="name" placeholder='john123' id="name"onChange={e => setName(e.target.value)}></input>
